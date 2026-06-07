@@ -1,0 +1,30 @@
+﻿@model List<Demo_List.Models.Staff>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Họ và Tên</th>
+        <th>Số điện thoại</th>
+        <th>Email liên hệ</th>
+        <th>Số điện thoại</th>
+    </tr>
+    @foreach(var staff in Model)
+    {
+        <tr>
+            <td>
+                @staff.ID
+            </td>
+            <td>
+                @staff.FullName
+            </td>
+            <td>
+                @staff.NumberPhone
+            </td>
+            <td>
+                @staff.Email
+            </td>
+            <td>
+                @staff.Address
+            </td>
+        </tr>
+    }
+</table>
