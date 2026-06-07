@@ -1,31 +1,149 @@
 ﻿@model List<Demo_List.Models.Staff>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Họ và Tên</th>
-        <th>Số điện thoại</th>
-        <th>Email liên hệ</th>
-        <th>Số điện thoại</th>
-    </tr>
-    @foreach(var staff in Model)
-    {
-        <tr>
-            <td>
-                @staff.ID
-            </td>
-            <td>
-                @staff.FullName
-            </td>
-            <td>
-                @staff.NumberPhone
-            </td>
-            <td>
-                @staff.Email
-            </td>
-            <td>
-                @staff.Address
-            </td>
-        </tr>
-    }
-</table>
-<a asp-controller="Home" asp-action="Create">Link</a>
+
+@{
+    ViewData["Title"] = "Danh Sách Nhân Viên";
+}
+
+<div class="container-fluid">
+
+    <!-- Tiêu đề + nút thêm -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold text-primary">
+                📋 Danh Sách Nhân Viên
+            </h2>
+            <p class="text-muted">
+                Quản lý thông tin nhân viên trong hệ thống
+            </p>
+        </div>
+
+        <a asp-controller="Home"
+           asp-action="Create"
+           class="btn btn-primary btn-lg">
+            ➕ Thêm Nhân Viên
+        </a>
+
+    </div>
+
+    <!-- Thống kê -->
+
+    <div class="row mb-4">
+
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Tổng Nhân Viên</h6>
+                    <h2 class="text-primary">@Model.Count</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Email Đã Khai Báo</h6>
+                    <h2 class="text-success">
+                        @Model.Count(x => !string.IsNullOrEmpty(x.Email))
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Địa Chỉ</h6>
+                    <h2 class="text-danger">
+                        @Model.Count
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bảng dữ liệu -->
+
+    <div class="card shadow border-0">
+
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">
+                Danh Sách Nhân Viên
+            </h5>
+        </div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover table-striped align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Mã NV</th>
+                            <th>Họ Và Tên</th>
+                            <th>Số Điện Thoại</th>
+                            <th>Email</th>
+                            <th>Địa Chỉ</th>
+                            <th width="180">Thao Tác</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var staff in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    <span class="badge bg-primary">
+                                        @staff.ID
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <strong>@staff.FullName</strong>
+                                </td>
+
+                                <td>
+                                    @staff.NumberPhone
+                                </td>
+
+                                <td>
+                                    @staff.Email
+                                </td>
+
+                                <td>
+                                    @staff.Address
+                                </td>
+
+                                <td>
+
+                                    <button class="btn btn-warning btn-sm">
+                                        ✏️ Sửa
+                                    </button>
+
+                                    <button class="btn btn-danger btn-sm">
+                                        🗑️ Xóa
+                                    </button>
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
