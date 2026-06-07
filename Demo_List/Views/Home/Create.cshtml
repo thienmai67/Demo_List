@@ -1,0 +1,46 @@
+﻿@model Demo_List.Models.Staff
+
+<h2>Thêm Nhân Viên</h2>
+
+<form asp-action="Create" method="post">
+
+    <div>
+        <label>Mã nhân viên</label>
+        <input asp-for="ID" />
+    </div>
+
+    <br />
+
+    <div>
+        <label>Họ và tên</label>
+        <input asp-for="FullName" />
+    </div>
+
+    <br />
+
+    <div>
+        <label>Số điện thoại</label>
+        <input asp-for="NumberPhone" />
+    </div>
+
+    <br />
+
+    <div>
+        <label>Email</label>
+        <input asp-for="Email" />
+    </div>
+
+    <br />
+
+    <div>
+        <label>Địa chỉ</label>
+        <input asp-for="Address" />
+    </div>
+
+    <br />
+
+    <button type="submit">
+        Thêm nhân viên
+    </button>
+
+</form>
